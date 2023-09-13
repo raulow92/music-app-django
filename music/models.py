@@ -4,6 +4,7 @@ from django.db import models
 class Artist(models.Model):
     name = models.CharField(max_length=200)
     genre = models.CharField(max_length=200)
+    image_url = models.CharField(max_length=200, default='https://community.spotify.com/t5/image/serverpage/image-id/55829iC2AD64ADB887E2A5?v=v2')
 
     def __str__(self):
         return self.name

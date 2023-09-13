@@ -157,6 +157,8 @@ li::marker {
 }
 
 .artista-item img {
+  width: 3em;
+  object-fit: cover;
   position: absolute;
   height: 100%;
   border-radius: 4px 0 0 4px;
@@ -213,7 +215,7 @@ table {
 
 th:hover,
 td:hover {
-  opacity: 0.8;
+  background-color: #4b4b4b;
 }
 
 th, td {
@@ -224,10 +226,14 @@ th, td {
 }
 
 th {
-  background-color: #4b4b4b;
+  background-color: #323232;
 }
 
-td {
+tbody:nth-child(even) {
+  background-color: #242424;
+}
+
+tbody:nth-child(odd) {
   background-color: #323232;
 }
 
@@ -248,16 +254,18 @@ footer {
 }
 
 .footer-container-up img {
-  width: 40px;
-  margin-right: 10px;
+  width: 50px;
+  margin-right: 20px;
 }
 
 .footer-left {
   display: flex;
   align-items: center;
+  width: 220px;
 }
 
 .footer-left p {
+  margin-top: 6px;
   font-size: 0.5em;
 }
 
@@ -368,6 +376,7 @@ footer {
   align-items: center;
   gap: 1em;
   font-size: 0.8em;
+  width: 220px;
 }
 
 .volume-bar-fill {
@@ -421,11 +430,21 @@ footer {
       display: none;
   }
 
+  .footer-left,
+  .footer-right {
+      width: auto;
+  }
+
   .footer-left > div,
   .fa-list,
   .volume-bar,
   .fa-up-right-and-down-left-from-center {
       display: none;
+  }
+
+  .fa-list::before,
+  .fa-up-right-and-down-left-from-center::before {
+    display: none;
   }
 
   .progress-bar {
