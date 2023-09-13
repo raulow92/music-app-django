@@ -1,0 +1,48 @@
+{% extends "music/base.html" %}
+
+{% block title %}
+<title>Music App</title>
+{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Artistas</h2>
+        <ol class="artistas-container"> 
+            {% for artist in artists %}
+            <li>
+                <div class="artista-item">
+                    <img src="./imgs/tvm2.jpg" alt="imagen de {{artist}}">
+                    <h3>{{artist}}</h3>
+                    <div class="play"><i class="fa-solid fa-play"></i></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+    <div class="shadow"></div>
+</section>
+<section>
+    <h2>Álbumes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Artista</th>
+                <th>Álbum</th>
+                <th>Año</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for artist in artists %}
+                {% for album in artist.album_set.all|dictsortreversed:"pub_date" %}
+                    {% if forloop.counter == 1 %}
+                        <tr>
+                            <td rowspan="{{ artist.album_set.all|length }}">{{artist}}</td>
+                    {% endif %}
+                        <td>{{album.name}}</td>
+                        <td>{{album.pub_date|date:"Y"}}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

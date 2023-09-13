@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block title %}<title>Music App</title>{% endblock %}
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="{% url 'index' %}"><i class="fa-solid fa-play"></i><h1>Music App</h1></a>
+    </header>
+
+
+
+    <main>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                    <p>Menú</p>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="">Artistas</a>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <a href="">Álbumes</a>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fa-solid fa-ticket"></i>
+                    <a href="">Conciertos</a>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fa-solid fa-video"></i>
+                    <a href="">Videos</a>
+                </li>
+            </ul>
+        </nav>
+
+        {% block content %}
+        {% endblock %}    
+
+    </main>
+    <footer>
+        <div class="footer-container-up">
+            <div class="footer-left">
+                <img class="album-thumbnail" src="./imgs/tvm.jpg" alt="">
+                <div>
+                    <h3 class="album-title">Tomás Va A Morir - Norminear</h3>
+                    <p>Tomás Va A Morir</p>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="footer-center-top">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <i class="fa-solid fa-step-backward"></i>
+                    <div class="play-main">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <i class="fa-solid fa-step-forward"></i>
+                    <i class="fa-solid fa-rotate-right"></i>
+                </div>
+                <div class="footer-center-bottom">
+                    <p>0:33</p>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <p>3:29</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <i class="fa-solid fa-list"></i>
+                <i class="fa-solid fa-volume-high"></i>
+                <div class="volume-bar">
+                    <div class="volume-bar-fill"></div>
+                </div>
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </div>
+        </div>
+        <div class="footer-container-bottom">
+            <p>
+                Copyright © Python y la Web, 2023. <span>Más información <a href="">en la página de La Clase Ejecutiva.</a></span>
+            </p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
