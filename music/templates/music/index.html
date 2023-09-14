@@ -12,7 +12,7 @@
             <li>
                 <div class="artista-item">
                     <img src="{{artist.image_url}}" alt="imagen de {{artist}}">
-                    <h3>{{artist}}</h3>
+                    <a href="{% url 'artist_detail' artist.id %}">{{artist}}</a>
                     <div class="play"><i class="fa-solid fa-play"></i></div>
                 </div>
             </li>
@@ -35,9 +35,9 @@
                 {% for album in artist.album_set.all|dictsortreversed:"pub_date" %}
                     {% if forloop.counter == 1 %}
                         <tr>
-                            <td rowspan="{{ artist.album_set.all|length }}">{{artist}}</td>
+                            <td rowspan="{{ artist.album_set.all|length }}"><a href="{% url 'artist_detail' artist.id %}">{{artist}}</a></td>
                     {% endif %}
-                        <td>{{album.name}}</td>
+                        <td><a href="{% url 'album_detail' album.id %}">{{album.name}}</a></td>
                         <td>{{album.pub_date|date:"Y"}}</td>
                     </tr>
                 {% endfor %}

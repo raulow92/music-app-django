@@ -1,6 +1,6 @@
 {% extends "music/base.html" %}
 
-<!-- {% block title %}
+{% block title %}
 <title>{{ artist }}</title>
 {% endblock %}
 
@@ -11,14 +11,15 @@
     <h3>Álbums:</h3>
     <ul>
         {% for album in artist.album_set.all %}
-        <li>{{ album }}</li>
+        <li>{{ album.name }}</li>
         {% endfor %}
     </ul>
-
+</section>
+<section>
     <form action="{% url 'artist_detail' artist.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Guardar">
     </form>
 </section>
-{% endblock %} -->
+{% endblock %}

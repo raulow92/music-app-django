@@ -1,0 +1,22 @@
+{% extends "music/base.html" %}
+
+{% block title %}
+<title>{{ album }}</title>
+{% endblock %}
+
+{% block content %}
+<section id="artist-page">
+    <h1>{{album}}</h1>
+    <h2>{{album.artist}}</h2>
+    <h2>{{album.name}}</h2>
+    <h2>{{album.pub_date|date:"Y"}}</h2>
+    <img src="{{album.image_url}}" alt="">
+</section>
+<section>
+    <form action="{% url 'album_detail' album.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Guardar">
+    </form>
+</section>
+{% endblock %}
