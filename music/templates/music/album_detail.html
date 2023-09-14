@@ -5,19 +5,23 @@
 {% endblock %}
 
 {% block content %}
-<section id="artist-page">
-    <h1>{{album}}</h1>
-    <a href="{% url 'artist_detail' album.artist_id %}">{{album.artist}}</a>
-    <h2>{{album.name}}</h2>
-    <h2>{{album.pub_date|date:"Y"}}</h2>
-    <img src="{{album.image_url}}" alt="">
+<section id="album-page">
+    <h2>{{ album.name }}</h2>
+    <div class="album-container">
+        <img src="{{album.image_url}}" alt="{{album}}">
+        <div class="info-album">
+            <a href="{% url 'artist_detail' album.artist_id %}">{{album.artist}}</a>
+            <p class="album-year">{{album.pub_date|date:"Y"}}</p>
+        </div>
+    </div>
     <div class="shadow"></div>
 </section>
 <section>
-    <form action="{% url 'album_detail' album.id %}" method="post">
+    <h2>Editar Álbum</h2>
+    <form  class="edit-form" action="{% url 'album_detail' album.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Guardar">
+        <input class="guardar" type="submit" value="Guardar">
     </form>
     <div class="shadow"></div>
 </section>
