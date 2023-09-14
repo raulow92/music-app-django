@@ -7,10 +7,11 @@
 {% block content %}
 <section id="artist-page">
     <h1>{{album}}</h1>
-    <h2>{{album.artist}}</h2>
+    <a href="{% url 'artist_detail' album.artist_id %}">{{album.artist}}</a>
     <h2>{{album.name}}</h2>
     <h2>{{album.pub_date|date:"Y"}}</h2>
     <img src="{{album.image_url}}" alt="">
+    <div class="shadow"></div>
 </section>
 <section>
     <form action="{% url 'album_detail' album.id %}" method="post">
@@ -18,5 +19,6 @@
         {{ form.as_p }}
         <input type="submit" value="Guardar">
     </form>
+    <div class="shadow"></div>
 </section>
 {% endblock %}

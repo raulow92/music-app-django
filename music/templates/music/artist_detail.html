@@ -7,19 +7,29 @@
 {% block content %}
 <section id="artist-page">
     <h2>{{ artist }}</h2>
-
-    <h3>Álbums:</h3>
-    <ul>
-        {% for album in artist.album_set.all %}
-        <li>{{ album.name }}</li>
-        {% endfor %}
-    </ul>
+    <div class="artist-container">
+        <div>
+            <img class="artist-img" src="{{ artist.image_url }}" alt="imagen de {{artist}}">
+        </div>
+        <div>
+            <h3>Género: <span class="genre">{{artist.genre}}</span></h3>
+            <h3>Álbumes:</h3>
+            <ul class="albums-list">
+                {% for album in artist.album_set.all|dictsortreversed:"pub_date" %}
+                <li><a href="{% url 'album_detail' album.id %}">· {{ album.name }} - {{album.pub_date|date:"Y"}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="shadow"></div>
 </section>
 <section>
-    <form action="{% url 'artist_detail' artist.id %}" method="post">
+    <h2>Editar Artista</h2>
+    <form class="artist-form" action="{% url 'artist_detail' artist.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Guardar">
+        <input class="guardar" type="submit" value="Guardar">
     </form>
+    <div class="shadow"></div>
 </section>
 {% endblock %}
