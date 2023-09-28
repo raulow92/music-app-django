@@ -14,12 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from rest_framework.routers import DefaultRouter
+from music import viewsets
+
+router = DefaultRouter()
+router.register('artists', viewsets.ArtistViewSet)
+router.register('albums', viewsets.AlbumViewSet)
 
 urlpatterns = [
     path('music/', include('music.urls')),
     path('admin/', admin.site.urls),
+    path('api/v1/', include(router.urls)),
+    
+    # Archivo YAML con especificación OpenAPI
+    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Documentación Swagger UI
+    path('api/v1/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    # Documentación Redoc
+    path('api/v1/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
