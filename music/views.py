@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from music.forms import ArtistForm, AlbumForm
+from music.forms import ArtistForm, AlbumForm, ImportForm
 from music.models import Artist, Album
+import requests
 
 def index(request):
     artists = Artist.objects.all()
@@ -31,3 +32,19 @@ def album_detail(request, album_id):
 
     context = {'album': album, 'form': form}
     return render(request, 'music/album_detail.html', context)
+
+def artist_import(request):
+    artist_data = None
+    if request.method == 'POST':
+        form = ImportForm(request.POST)
+        if form.is_valid():
+            artist_id = form.cleaned_data['artist_id']
+            url = f"https://api.discogs.com/artists/{artist_id}" 
+            artist_data = requests.get(url).json()
+            if form.cleaned_data['import_artist']:
+                Artist.objects.create(name=artist_data['name'], genre="No disponible")
+        print("hola")
+    else:
+        form = ImportForm()
+    context = {'form': form, 'artist': artist_data}
+    return render(request, 'music/artist_import.html', context)

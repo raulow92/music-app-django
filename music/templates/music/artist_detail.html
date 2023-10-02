@@ -25,7 +25,7 @@
 </section>
 <section>
     <h2>Editar Artista</h2>
-    <form class="edit-form" action="{% url 'artist_detail' artist.id %}" method="post">
+    <form id="artist-form" data-artist-id="{{ artist.id }}" class="edit-form" action="{% url 'artist_detail' artist.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input class="guardar" type="submit" value="Guardar">

@@ -10,3 +10,7 @@ class AlbumForm(forms.ModelForm):
     class Meta:
         model = Album
         fields = "__all__"
+
+class ImportForm(forms.Form):
+    artist_id = forms.IntegerField()
+    import_artist = forms.BooleanField(required=False)

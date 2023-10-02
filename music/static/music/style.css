@@ -569,6 +569,17 @@ input.guardar {
   font-size: 0.8em;
 }
 
+.alert-success {
+  color:#b3b3b3;
+  font-size: 0.8em;
+  margin-top: 0.8em;
+  text-align: center;
+}
+
+.form-import p, .artist-import {
+  color: white;
+}
+
 @media only screen and (max-width: 1020px) {
   main {
       grid-template-columns: 1fr;
