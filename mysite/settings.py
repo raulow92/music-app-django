@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qym7_89g@y5o8)6#^z!k$ou4pj6xez6to_953vod-z!r2cv-**
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -139,3 +139,7 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'App de música',
     'VERSION': '1.0.0',
 }
+
+import os
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
